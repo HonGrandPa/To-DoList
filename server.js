@@ -11,8 +11,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = 3000;
 
-const Location_API_URL = "https://ipgeolocation.abstractapi.com/v1/?api_key=be3dcbb572de40e0940377dfa1c725c8";
-const Weather_API_URL = "https://api.weatherapi.com/v1/current.json?key=6542d139cde9494dba292108231810 &q="
+
 
 
 
