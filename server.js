@@ -42,16 +42,16 @@ const itemSchema = {
     name: String
 };
 
-    // const response = await axios.get(Location_API_URL);
-    // const responseData = response.data.ip_address;
-    // console.log("user id:" + responseData)
+// const response = await axios.get(Location_API_URL);
+// const responseData = response.data.ip_address;
+// console.log("user id:" + responseData)
 
-    // const Task = mongoose.model(`Task${responseData}`, itemSchema);
+// const Task = mongoose.model(`Task${responseData}`, itemSchema);
 
-    // Process the responseData here
+// Process the responseData here
 
 
-    const Task = mongoose.model("Task", itemSchema);
+const Task = mongoose.model("Task", itemSchema);
 
 
 const weekday = [
@@ -67,29 +67,30 @@ const weekday = [
 const defaultTaskFromHon = new Task({ name: `Happy ${weekday[new Date().getDay()]} From HonGrandPa` })
 
 
+//varible to track daytime 
+let day = "day";
+
+//obtain client latitude and longtitude
+const response_location = await axios.get(Location_API_URL);
+console.log("Latitude: " + response_location.data.latitude + " Longtitude: " + response_location.data.longitude);
+
+//get the weather condition where client lives
+const response_weather = await axios.get(Weather_API_URL + `${response_location.data.latitude},${response_location.data.longitude}`);
+
+
+
+//icons' address
+console.log(response_weather.data.current.condition.icon);
+const iconAddress = response_weather.data.current.condition.icon;
+//this is the path to retrieve the icon from the folder
+const iconInfo = iconAddress.slice(35, 48);
+console.log(iconInfo);
+
+
+
 app.get("/", async (req, res) => {
 
     try {
-
-        //varible to track daytime 
-        let day = "day";
-
-        //obtain client latitude and longtitude
-        const response_location = await axios.get(Location_API_URL);
-        //console.log("Latitude: " + response_location.data.latitude + " Longtitude: " + response_location.data.longitude);
-
-        //get the weather condition where client lives
-        const response_weather = await axios.get(Weather_API_URL + `${response_location.data.latitude},${response_location.data.longitude}`);
-        //console.log(response_weather.data.is_day);
-
-
-        //icons' address
-        //console.log(response_weather.data.current.condition.icon);
-        const iconAddress = response_weather.data.current.condition.icon;
-        //this is the path to retrieve the icon from the folder
-        const iconInfo = iconAddress.slice(35, 48);
-        //console.log(iconInfo);
-
 
         //look for the stored tasks from the DB
         const storedTasks = await Task.find()
@@ -181,7 +182,7 @@ app.post("/delete", (req, res) => {
 
     //check if clent decito use drop function or not
     //if no -> complete
-    if(!checkID) {
+    if (!checkID) {
 
         const id = req.body.checkbox
 
@@ -190,34 +191,34 @@ app.post("/delete", (req, res) => {
 
         Task.findByIdAndDelete(id)
 
-        .then(result => {
-    
-            console.log("Complete Success")
-    
-        })
-        .catch(error => {
-    
-            console.log("Eroor Complete")
-        });
+            .then(result => {
+
+                console.log("Complete Success")
+
+            })
+            .catch(error => {
+
+                console.log("Eroor Complete")
+            });
 
     } else {
 
-    console.log("Drop ID :" + checkID)
+        console.log("Drop ID :" + checkID)
 
-    Task.deleteOne({ _id: checkID })
+        Task.deleteOne({ _id: checkID })
 
-        .then(result => {
+            .then(result => {
 
-            console.log("Drop Success");
+                console.log("Drop Success");
 
-        })
-        .catch(error => {
+            })
+            .catch(error => {
 
-            console.log("Eroor drop");
-        });
+                console.log("Eroor drop");
+            });
 
     }
-    
+
 
 })
 
@@ -238,7 +239,7 @@ app.post("/delete", (req, res) => {
 //     list.save();
 
 //    const found = await List.findOne({nmae:customeListName})
-    
+
 
 //   if (found) {
 
@@ -264,7 +265,7 @@ app.post("/delete", (req, res) => {
 
 //     list.save();
 //     //does not exit
-   
+
 //   }
 
 
@@ -275,7 +276,7 @@ app.post("/delete", (req, res) => {
 // })
 
 
-app.listen(process.env.PORT||port, (err) => {
+app.listen(process.env.PORT || port, (err) => {
 
     if (err) {
 
