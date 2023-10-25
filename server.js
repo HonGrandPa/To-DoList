@@ -277,14 +277,7 @@ app.post("/delete", (req, res) => {
 
 // })
 
-
-app.listen(process.env.PORT || port, (err) => {
-
-    if (err) {
-
-        console.log(err)
-    } else {
-
-        console.log("connected")
-    }
-})
+const server = app.listen(process.env.PORT || 5000, () => {
+    const port = server.address().port;
+    console.log(`Express is working on port ${port}`);
+  });
