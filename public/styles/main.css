@@ -1,0 +1,418 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+
+
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    padding: 80px;
+    background: linear-gradient(135deg, #9F8772, #C8DBBE);
+
+}
+
+.container {
+
+    width: 100%;
+    background-color: #F3F4ED;
+    padding: 20px;
+    max-width: 600px;
+    position: absolute;
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin: 5px auto 20px;
+    padding: 40px 40px 40px;
+    left: 0;
+    right: 0;
+    bottom: 20;
+
+    /* text-align: center; */
+    border-radius: 30px;
+
+}
+
+.title-container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+h1 {
+
+    font-family: 'Cute Font', sans-serif;
+    font-size: 4.5rem;
+    color: #536162;
+
+
+}
+
+
+.date-container {
+
+    display: flex;
+    font-family: 'Architects Daughter', cursive;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: smaller;
+
+}
+
+
+.date-container>ul {
+
+    list-style-type: none;
+}
+
+.date-container>ul>* {
+
+
+    border-radius: 20px;
+    margin: 0 0 7px 0;
+    color: #536162;
+}
+
+.date-container>img {
+
+    width: 120px;
+    height: 120px;
+}
+
+
+.row {
+
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+    align-items: center;
+    background-color: #EDEDED;
+    height: 40px;
+    width: 520px;
+    margin-left: 18px;
+}
+
+input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 10px;
+    font-family: 'Averia Sans Libre', sans-serif;
+}
+
+#row-btn {
+
+    border: none;
+    outline: none;
+    padding: 11px 30px;
+    background-color: #D8D9CF;
+    color: #536162;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-family: 'Averia Sans Libre', sans-serif;
+}
+
+
+#row-btn:hover {
+
+    background-color: #536162;
+    color: #D8D9CF;
+
+}
+
+
+
+
+
+.task-list {
+
+    list-style: none;
+    float: left;
+    font-size: 0.9rem;
+    color: #536162;
+    font-family: 'Averia Sans Libre', sans-serif;
+    margin-left: 12px;
+}
+
+
+
+.checkbox {
+
+    margin: 10px 10px 10px 10px;
+    /* height: 16px;
+    width: 16px; */
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+
+}
+
+.checkbox:hover {
+
+    background-color: #536162;
+
+}
+
+.checkbox:checked {
+
+    background-color: #536162;
+
+}
+
+
+span {
+
+    position: absolute;
+    top: 12px;
+    left: 500px;
+    width: 20px;
+    height: 20px;
+    color: #555;
+    font-size: 15px;
+    text-align: center;
+
+}
+
+span:hover {
+
+
+    border-radius: 50%;
+    background-color: #D8D9CF;
+    ;
+    cursor: pointer;
+
+}
+
+
+
+.complete {
+
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+}
+
+
+.today {
+
+    background-color: #C8DBBE;
+
+}
+
+
+/* .day-list > * {
+
+    background-color: #C8DBBE;
+    
+} */
+
+
+.checkBtn {
+
+    background-color: transparent;
+    border: none;
+}
+
+@media screen and (max-width: 650px) {
+
+
+
+
+    html {
+
+        font-size: small;
+    }
+
+    h1 {
+
+        font-size: 4rem;
+    }
+
+    body {
+        width: 100%;
+        min-height: 100vh;
+        padding-top: 50px;
+        background: linear-gradient(135deg, #9F8772, #C8DBBE);
+
+    }
+
+    .container {
+
+
+        max-width: 450px;
+        
+
+    }
+
+
+    .task {
+
+        position: relative;
+        font-size: smaller;
+    }
+
+    .row {
+
+        width: 100%;
+       
+        display: flex;
+
+        height: 30px;
+
+        margin-bottom: 10px;
+
+    }
+
+    span {
+        position: absolute;
+        top: 0;
+        left: 340px;
+        width: 20px;
+        height: 20px;
+        color: #555;
+        font-size: 15px;
+        text-align: center;
+    }
+
+    input[type=checkbox] {
+
+
+        -webkit-transform: scale(0.7);
+        /* Safari and Chrome */
+
+        padding: 10px;
+    }
+
+    #input-box {
+
+        font-size: 0.8rem;
+    }
+
+    #row-btn {
+ 
+        padding: 9px 20px;
+      
+        font-size: 0.7rem;
+
+    }
+
+    .checkbox {
+
+        margin: 0;
+        margin-left: 8px;
+    }
+ 
+    
+    .date-container>img {
+
+        height: 100px;
+        width: 100px;
+    }
+
+    .date-container>ul>* {
+
+        margin: 0 0 4.6px 0;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+
+
+    body {
+        padding: 20px; /* Adjust padding for content */
+      }
+    
+      .container {
+        max-width: 320px; /* Full width for the container */
+      }
+    
+      h1 {
+        font-size: 3.2rem; /* Reduce the title's font size */
+      }
+    
+      .title-container {
+        gap: 10px; /* Reduce the gap between title elements */
+      }
+    
+      .row {
+        width: 100%; /* Full width for rows */
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Left-align elements */
+      }
+    
+      span {
+        position: relative; /* Change position to relative to keep it within the container */
+        top: 0; /* Reset top position */
+        left: 0; /* Reset left position */
+        text-align: left; /* Adjust text alignment for better positioning */
+      }
+
+      .date-container {
+    
+        gap: 8px;
+     
+    }
+
+    .title-container {
+        gap: 15px;
+    }
+
+    .date-container>img {
+        height: 80px;
+        width: 80px;
+    }
+
+    .row {
+        max-width: 250px;
+        margin-left: 0;
+
+
+    }
+
+    #input-box {
+        position: relative;
+        font-size: 0.8rem;
+    }
+
+    #row-btn {
+        position: absolute;
+        padding: 9px 20px;
+        font-size: 0.7rem;
+        right: 0;
+    }
+
+    .task-list {
+       
+        font-size: 0.7rem;
+        
+        margin-left: 0;
+    }
+
+    span {
+        font-size: 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: left;
+        width: 10px;
+        height: 10px;
+        margin-left: 220px;
+    }
+
+}

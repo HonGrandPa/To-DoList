@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Sofia+Sans+Condensed&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="title-container">
+            <h1>Daily To Do List</h1>
+
+            <div class="date-container">
+                <ul class="day-list">
+                    <li class="Sun">Sun</li>
+                    <li class="Mon">Mon</li>
+                    <li class="Tus">Tue</li>
+                    <li class="Wed">Wed</li>
+                    <li class="Thu">Thu</li>
+                    <li class="Fri">Fri</li>
+                    <li class="Sat">Sat</li>
+                </ul>
+                <img src="/icons/<%=icon%>" alt="weather-image">
+            </div>
+        </div>
+
+        <form action="/submit" method="POST">
+        <div class="row">
+            <input type="text" id="input-box" name="newTask" placeholder="Add your text">
+            <button type="submit" id="row-btn" name="list">Add</button>
+        </div>
+        </form>
+
+
+        <form action="/delete" method="POST" name="formList">
+        <ul class="task-list">
+            <% if(locals.tasks) {%>
+
+                <% tasks.forEach(function (task) { %>
+                    <li class="task"><input class="checkbox" value="<%=task._id%>"type="checkbox" name="checkbox" onchange="this.form.submit()">
+                        <%=task.name %><span onclick="deleteTask('<%=task._id%>');">×</span>
+                    </li>
+                    
+                    <%});%>
+
+                        <% } %>
+        </ul>
+        <input class="selection" type="hidden" name="taskId" value="">
+        </form>
+
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="/app/app.js"></script>
+</body>
+
+</html>
