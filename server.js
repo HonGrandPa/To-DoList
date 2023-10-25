@@ -42,16 +42,16 @@ const itemSchema = {
     name: String
 };
 
-// const response = await axios.get(Location_API_URL);
-// const responseData = response.data.ip_address;
-// console.log("user id:" + responseData)
+const response = await axios.get(Location_API_URL);
+const responseData = response.data.ip_address;
+console.log("user id:" + responseData)
 
-// const Task = mongoose.model(`Task${responseData}`, itemSchema);
+const Task = mongoose.model(`Task${responseData}`, itemSchema);
 
 // Process the responseData here
 
 
-const Task = mongoose.model("Task", itemSchema);
+//const Task = mongoose.model("Task", itemSchema);
 
 
 const weekday = [
