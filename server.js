@@ -70,27 +70,29 @@ const defaultTaskFromHon = new Task({ name: `Happy ${weekday[new Date().getDay()
 //varible to track daytime 
 let day = "day";
 
-//obtain client latitude and longtitude
-const response_location = await axios.get(Location_API_URL);
-console.log("Latitude: " + response_location.data.latitude + " Longtitude: " + response_location.data.longitude);
 
-//get the weather condition where client lives
-const response_weather = await axios.get(Weather_API_URL + `${response_location.data.latitude},${response_location.data.longitude}`);
-
-
-
-//icons' address
-console.log(response_weather.data.current.condition.icon);
-const iconAddress = response_weather.data.current.condition.icon;
-//this is the path to retrieve the icon from the folder
-const iconInfo = iconAddress.slice(35, 48);
-console.log(iconInfo);
 
 
 
 app.get("/", async (req, res) => {
 
     try {
+
+        //obtain client latitude and longtitude
+        const response_location = await axios.get(Location_API_URL);
+        console.log("Latitude: " + response_location.data.latitude + " Longtitude: " + response_location.data.longitude);
+
+        //get the weather condition where client lives
+        const response_weather = await axios.get(Weather_API_URL + `${response_location.data.latitude},${response_location.data.longitude}`);
+
+
+
+        //icons' address
+        console.log(response_weather.data.current.condition.icon);
+        const iconAddress = response_weather.data.current.condition.icon;
+        //this is the path to retrieve the icon from the folder
+        const iconInfo = iconAddress.slice(35, 48);
+        console.log(iconInfo);
 
         //look for the stored tasks from the DB
         const storedTasks = await Task.find()
